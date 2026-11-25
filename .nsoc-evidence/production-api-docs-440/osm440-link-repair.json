@@ -1,0 +1,187 @@
+{
+  "checkedAt": "2026-11-25T18:35:34.848038+00:00",
+  "repositoryApi": {
+    "has_discussions": false,
+    "has_issues": true
+  },
+  "removedUnavailableLinks": [
+    "README.md",
+    "README.hi.md",
+    "SUPPORT.md"
+  ],
+  "relativeLinksVerified": [
+    {
+      "file": "README.md",
+      "target": "README.hi.md"
+    },
+    {
+      "file": "README.md",
+      "target": "LICENSE"
+    },
+    {
+      "file": "README.md",
+      "target": "PROGRAM_GUIDE.md"
+    },
+    {
+      "file": "README.md",
+      "target": "ROADMAP.md"
+    },
+    {
+      "file": "README.md",
+      "target": "ARCHITECTURE.md"
+    },
+    {
+      "file": "README.md",
+      "target": "docs/api-v1-and-openapi-docs.md"
+    },
+    {
+      "file": "README.md",
+      "target": "docs/api-usage-examples.md"
+    },
+    {
+      "file": "README.md",
+      "target": "docs/linting-and-formatting.md"
+    },
+    {
+      "file": "README.md",
+      "target": "docs/LABELS.md"
+    },
+    {
+      "file": "README.md",
+      "target": "CONTRIBUTING.md"
+    },
+    {
+      "file": "README.md",
+      "target": "PROGRAM_GUIDE.md"
+    },
+    {
+      "file": "README.md",
+      "target": "frontend/components/ContributorsWall.tsx"
+    },
+    {
+      "file": "README.md",
+      "target": "frontend/utils/githubContributors.ts"
+    },
+    {
+      "file": "README.md",
+      "target": "CONTRIBUTING.md"
+    },
+    {
+      "file": "README.md",
+      "target": ".github/ISSUE_TEMPLATE/proposal.yml"
+    },
+    {
+      "file": "README.md",
+      "target": "CONTRIBUTING.md#proposing-larger-changes-rfc-process"
+    },
+    {
+      "file": "README.md",
+      "target": "SUPPORT.md"
+    },
+    {
+      "file": "README.md",
+      "target": "SUPPORT.md"
+    },
+    {
+      "file": "README.md",
+      "target": "docs/adr/"
+    },
+    {
+      "file": "README.md",
+      "target": "GOVERNANCE.md"
+    },
+    {
+      "file": "README.md",
+      "target": "LICENSE"
+    },
+    {
+      "file": "README.hi.md",
+      "target": "README.md"
+    },
+    {
+      "file": "README.hi.md",
+      "target": "LICENSE"
+    },
+    {
+      "file": "README.hi.md",
+      "target": "ROADMAP.md"
+    },
+    {
+      "file": "README.hi.md",
+      "target": "ARCHITECTURE.md"
+    },
+    {
+      "file": "README.hi.md",
+      "target": "docs/api-v1-and-openapi-docs.md"
+    },
+    {
+      "file": "README.hi.md",
+      "target": "docs/api-usage-examples.md"
+    },
+    {
+      "file": "README.hi.md",
+      "target": "docs/linting-and-formatting.md"
+    },
+    {
+      "file": "README.hi.md",
+      "target": "docs/LABELS.md"
+    },
+    {
+      "file": "README.hi.md",
+      "target": "CONTRIBUTING.md"
+    },
+    {
+      "file": "README.hi.md",
+      "target": "frontend/components/ContributorsWall.tsx"
+    },
+    {
+      "file": "README.hi.md",
+      "target": "frontend/utils/githubContributors.ts"
+    },
+    {
+      "file": "README.hi.md",
+      "target": "CONTRIBUTING.md"
+    },
+    {
+      "file": "README.hi.md",
+      "target": "CONTRIBUTING.md#proposing-larger-changes-rfc-process"
+    },
+    {
+      "file": "README.hi.md",
+      "target": ".github/ISSUE_TEMPLATE/proposal.yml"
+    },
+    {
+      "file": "README.hi.md",
+      "target": "SUPPORT.md"
+    },
+    {
+      "file": "README.hi.md",
+      "target": "SUPPORT.md"
+    },
+    {
+      "file": "README.hi.md",
+      "target": "docs/adr/"
+    },
+    {
+      "file": "README.hi.md",
+      "target": "GOVERNANCE.md"
+    },
+    {
+      "file": "README.hi.md",
+      "target": "LICENSE"
+    },
+    {
+      "file": "SUPPORT.md",
+      "target": "ROADMAP.md"
+    },
+    {
+      "file": "SUPPORT.md",
+      "target": "SECURITY.md"
+    },
+    {
+      "file": "SUPPORT.md",
+      "target": "CODE_OF_CONDUCT.md"
+    }
+  ],
+  "unchangedRuntime": "Only README.md, README.hi.md and SUPPORT.md differ from c0ecdc9; original exact runtime tests remain applicable. Hosted complete link checker requested by source push."
+}

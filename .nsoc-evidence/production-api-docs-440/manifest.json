@@ -1,9 +1,9 @@
 {
   "issue": "https://github.com/Muskankr/OpenSourceMate/issues/440",
   "sourceRepository": "https://github.com/divyanshAgarwal123/OpenSourceMate",
-  "sourceHead": "c0ecdc9ca37af61a4f91de5aafc886a86fad2d4a",
-  "actualSourceParent": "f6d84ec256678d6e286c847e344dfdcb65ff7a2b",
-  "capturedAt": "2026-11-25T18:24:32.007488+00:00",
+  "sourceHead": "d80f9b414515ab0227f282d6d4a3c236515508d5",
+  "actualSourceParent": "c0ecdc9ca37af61a4f91de5aafc886a86fad2d4a",
+  "capturedAt": "2026-11-25T18:36:13.708666+00:00",
   "sourceBlobs": [
     {
       "path": ".github/workflows/ci.yml",
@@ -11,11 +11,15 @@
     },
     {
       "path": "README.hi.md",
-      "gitBlobOid": "713767b57d19f7e2aa79cdd1043486641b920eec"
+      "gitBlobOid": "eee3825bf19d7d8e43bc356345595c63caa4ff11"
     },
     {
       "path": "README.md",
-      "gitBlobOid": "ab308f2aa74a27d1c1b73e1e7d06677e8285d363"
+      "gitBlobOid": "74bffe898e68b6d2e930830ed3b5731914b97fe0"
+    },
+    {
+      "path": "SUPPORT.md",
+      "gitBlobOid": "de9cb31e7412b902b0b95d428836769fb9f8d5eb"
     },
     {
       "path": "backend/.env.example",
@@ -49,9 +53,9 @@
   "artifacts": [
     {
       "path": "README.md",
-      "bytes": 2360,
-      "sha256": "dd3e4de754b19a24b79b79b1c19dc864fcefc5188fba9e229e2e042019015ee9",
-      "gitBlobOid": "f9d23f3bb2d73d7c43a562d924d23e980104d376"
+      "bytes": 2926,
+      "sha256": "8d04b78c0159872bb9d3cb5b331e06e8792c6dfc04faf21d2d43f9e5ad3ca3d6",
+      "gitBlobOid": "defba52f475ee2686c67d3a8a9685b5ee6f9cdfa"
     },
     {
       "path": "osm440-backend-validation-steps.json",
@@ -108,6 +112,18 @@
       "gitBlobOid": "bd26bd651feac1a0da21d40416e4674d56579092"
     },
     {
+      "path": "osm440-link-commit-secrets.json",
+      "bytes": 3,
+      "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+      "gitBlobOid": "fe51488c7066f6687ef680d6bfaa4f7768ef205c"
+    },
+    {
+      "path": "osm440-link-repair.json",
+      "bytes": 3888,
+      "sha256": "e895f0201847a0e5e9ff46ddce83a0d31b4198e0b799c74b98622991dce095ee",
+      "gitBlobOid": "4c3be5e311717589fc9dd0f17208b31e4a1d555f"
+    },
+    {
       "path": "osm440-npm-audit.txt",
       "bytes": 24,
       "sha256": "6d8c5c8f3d7684adb070417bd608d01ae90aa3dc26a65af03ffda4955f38d9a3",
@@ -145,9 +161,9 @@
     },
     {
       "path": "osm440-validation-summary.json",
-      "bytes": 7093,
-      "sha256": "4db0793119baef84d4c8c230cfd4823bd0700db35455ee18ac2669d0d703e09e",
-      "gitBlobOid": "933d91e39ca374a2fa08a29ce6e42d31e243b182"
+      "bytes": 12199,
+      "sha256": "1dacc88fdefd313b9e322d48c2f2e8ccf1f77a94342fec4d3d027381237210fc",
+      "gitBlobOid": "c3d2e876c15234512e84e8638c5c68f9ff594da1"
     }
   ],
   "rawLocalReports": [
@@ -163,5 +179,7 @@
       "path": "osm440-frontend-tests.log",
       "sha256": "cfafde01024f0885a7d6208af06b3c0d24e4bff3ebfff1c5f04cabb92e2f2eed"
     }
-  ]
+  ],
+  "comparisonBase": "f6d84ec256678d6e286c847e344dfdcb65ff7a2b",
+  "runtimeValidatedHead": "c0ecdc9ca37af61a4f91de5aafc886a86fad2d4a"
 }
