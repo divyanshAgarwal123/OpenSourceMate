@@ -1,0 +1,216 @@
+{
+  "observedAt": "2026-11-25T18:21:01.731217+00:00",
+  "actualParent": "f6d84ec256678d6e286c847e344dfdcb65ff7a2b",
+  "dependencies": "Fresh Python3.12.11 declared requirements installed; FastAPI0.162.7; pip check PASS",
+  "focused": {
+    "passed": 32,
+    "failed": 0,
+    "newTests": 15
+  },
+  "schemaCheck": "PASS actual generated document, 27 paths; malformed structure/reference CLI exits nonzero",
+  "backend": {
+    "head": {
+      "passed": 426,
+      "failed": 17,
+      "errors": 1,
+      "coverage": 89.63
+    },
+    "parent": {
+      "passed": 411,
+      "failed": 17,
+      "errors": 1,
+      "coverage": 90.16
+    },
+    "sameFailingIds": [
+      "tests/test_account_type_handling.py::test_detects_organization_account_and_raises",
+      "tests/test_account_type_handling.py::test_detects_renamed_account_via_payload_login_mismatch",
+      "tests/test_account_type_handling.py::test_detects_suspended_account_and_raises",
+      "tests/test_account_type_handling.py::test_standard_user_account_succeeds_without_error",
+      "tests/test_account_type_routes.py::test_route_get_user_organization_account_returns_422",
+      "tests/test_account_type_routes.py::test_route_get_user_suspended_account_returns_403",
+      "tests/test_explicit_skills_matching.py::test_backend_accepts_explicit_skills_and_filters_results",
+      "tests/test_feature_alignment.py::TestFeatureAlignmentDocumentation::test_no_obsolete_instant_matching_claim_in_analyzer_hint",
+      "tests/test_feature_flags.py::TestFeatureFlagsConfig::test_feature_flags_all_flags_documented_and_exist",
+      "tests/test_feature_flags.py::TestFeatureFlagsConfig::test_feature_flags_case_insensitive_and_truthy_parsing",
+      "tests/test_feature_flags.py::TestFeatureFlagsConfig::test_feature_flags_default_to_false",
+      "tests/test_feature_flags.py::TestFeatureFlagsConfig::test_feature_flags_env_override",
+      "tests/test_friendliness_service.py::test_evaluate_contributor_friendliness_full_checklist",
+      "tests/test_github_service.py::test_cache_is_skipped_when_ttl_is_zero",
+      "tests/test_matching_without_ml.py::test_analyzer_matching_runs_without_ml_dependencies",
+      "tests/test_program_service.py::test_get_matched_issues_with_program_query",
+      "tests/test_program_service.py::test_programs_endpoints",
+      "tests/test_requirements_matrix.py::test_requirements_matrix_formatting_and_constraints"
+    ],
+    "newFailingIds": [],
+    "mypy": "PASS head38 and parent37 files",
+    "scopedRuff": "PASS lint/format",
+    "fullRuff": {
+      "head": 109,
+      "parent": 118,
+      "newMappedDiagnostics": []
+    }
+  },
+  "browser": {
+    "results": [
+      {
+        "mode": "development",
+        "enabled": true,
+        "statuses": {
+          "/docs": 200,
+          "/docs/oauth2-redirect": 200,
+          "/redoc": 200,
+          "/openapi.json": 200
+        },
+        "discovery": {
+          "title": "OpenSourceMate API",
+          "version": "1.0.0",
+          "enabled": true,
+          "docs_url": "/docs",
+          "redoc_url": "/redoc",
+          "openapi_url": "/openapi.json",
+          "tags": [
+            "Health",
+            "GitHub",
+            "Matching",
+            "Issues",
+            "AI"
+          ]
+        },
+        "views": [
+          {
+            "width": 1280,
+            "liveHealthStatus": 200,
+            "errors": [],
+            "horizontalOverflow": false
+          },
+          {
+            "width": 390,
+            "liveHealthStatus": 200,
+            "errors": [],
+            "horizontalOverflow": false
+          }
+        ],
+        "schemaPaths": 27,
+        "openapi": "3.1.0"
+      },
+      {
+        "mode": "production-default",
+        "enabled": false,
+        "statuses": {
+          "/docs": 404,
+          "/docs/oauth2-redirect": 404,
+          "/redoc": 404,
+          "/openapi.json": 404
+        },
+        "discovery": {
+          "title": "OpenSourceMate API",
+          "version": "1.0.0",
+          "enabled": false,
+          "docs_url": null,
+          "redoc_url": null,
+          "openapi_url": null,
+          "tags": [
+            "Health",
+            "GitHub",
+            "Matching",
+            "Issues",
+            "AI"
+          ]
+        },
+        "views": []
+      },
+      {
+        "mode": "production-opt-in",
+        "enabled": true,
+        "statuses": {
+          "/docs": 200,
+          "/docs/oauth2-redirect": 200,
+          "/redoc": 200,
+          "/openapi.json": 200
+        },
+        "discovery": {
+          "title": "OpenSourceMate API",
+          "version": "1.0.0",
+          "enabled": true,
+          "docs_url": "/docs",
+          "redoc_url": "/redoc",
+          "openapi_url": "/openapi.json",
+          "tags": [
+            "Health",
+            "GitHub",
+            "Matching",
+            "Issues",
+            "AI"
+          ]
+        },
+        "views": [
+          {
+            "width": 1280,
+            "liveHealthStatus": 200,
+            "errors": [],
+            "horizontalOverflow": false
+          },
+          {
+            "width": 390,
+            "liveHealthStatus": 200,
+            "errors": [],
+            "horizontalOverflow": false
+          }
+        ],
+        "schemaPaths": 27,
+        "openapi": "3.1.0"
+      },
+      {
+        "mode": "development-disabled",
+        "enabled": false,
+        "statuses": {
+          "/docs": 404,
+          "/docs/oauth2-redirect": 404,
+          "/redoc": 404,
+          "/openapi.json": 404
+        },
+        "discovery": {
+          "title": "OpenSourceMate API",
+          "version": "1.0.0",
+          "enabled": false,
+          "docs_url": null,
+          "redoc_url": null,
+          "openapi_url": null,
+          "tags": [
+            "Health",
+            "GitHub",
+            "Matching",
+            "Issues",
+            "AI"
+          ]
+        },
+        "views": []
+      }
+    ]
+  },
+  "frontend": {
+    "sourceUnchanged": true,
+    "actualParentTree": "255713096f1dbcf2339567c0f59de8b6bbe3f1d1",
+    "npmCi": "PASS Node22.23.5",
+    "tests": {
+      "passed": 700,
+      "failed": 24,
+      "passedSuites": 78,
+      "failedSuites": 11
+    },
+    "lint": "FAIL existing TS7 unsupported by typescript-eslint",
+    "types": "FAIL existing JSX inside .ts tests",
+    "build": "FAIL existing mockIssues.ts / route configuration errors",
+    "codegenCheck": "PASS"
+  },
+  "limitations": [
+    "Full canonical repository quality gates remain red on exact upstream parent / unchanged frontend; not merge-ready.",
+    "OpenSourceMate440 has no campaign/difficulty labels; do not claim Level3 or points.",
+    "The validator checks FastAPI structure, operations/responses and generated local references; it does not claim every OpenAPI semantic constraint."
+  ],
+  "sourceHead": "c0ecdc9ca37af61a4f91de5aafc886a86fad2d4a",
+  "actualSourceParent": "f6d84ec256678d6e286c847e344dfdcb65ff7a2b",
+  "sourceSecretScan": "PASS zero added-source/commit findings",
+  "productionNpmAudit": "PASS zero vulnerabilities",
+  "pipAudit": "Not run locally: tool unavailable; hosted security audit remains pending"
+}

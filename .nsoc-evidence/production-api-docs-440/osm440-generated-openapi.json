@@ -1,0 +1,2249 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "OpenSourceMate API",
+    "description": "\n# OpenSourceMate REST API\n\nAn AI-powered open-source contribution assistant that analyzes developer GitHub profiles\nand provides personalized repository and issue recommendations.\n\n## API Versioning\nAll primary API endpoints are accessible with the `/api/v1/` prefix as well as legacy `/api/` paths\nfor backward compatibility.\n\n## Interactive Documentation\n* **Swagger UI:** [/docs](/docs)\n* **ReDoc:** [/redoc](/redoc)\n* **OpenAPI Specification:** [/openapi.json](/openapi.json)\n    ",
+    "contact": {
+      "name": "OpenSourceMate Team",
+      "url": "https://github.com/Muskankr/OpenSourceMate"
+    },
+    "license": {
+      "name": "MIT License",
+      "url": "https://opensource.org/licenses/MIT"
+    },
+    "version": "1.0.0"
+  },
+  "paths": {
+    "/api/v1": {
+      "get": {
+        "tags": [
+          "Health"
+        ],
+        "summary": "API v1 discovery and endpoint directory",
+        "description": "Discover available API versions, endpoints, and links to documentation.",
+        "operationId": "api_version_directory_api_v1_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiVersionOverviewSerializer"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Unified error envelope for non-success HTTP responses.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponseSerializer"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api": {
+      "get": {
+        "tags": [
+          "Health"
+        ],
+        "summary": "API discovery and version overview",
+        "description": "Discover available API versions, endpoints, and links to documentation.",
+        "operationId": "api_version_directory_api_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiVersionOverviewSerializer"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Unified error envelope for non-success HTTP responses.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponseSerializer"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/health": {
+      "get": {
+        "tags": [
+          "Health"
+        ],
+        "summary": "Health check (v1)",
+        "description": "Health check endpoint returning service status, name and version.",
+        "operationId": "health_check_api_v1_health_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HealthResponseSerializer"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Unified error envelope for non-success HTTP responses.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponseSerializer"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/health": {
+      "get": {
+        "tags": [
+          "Health"
+        ],
+        "summary": "Health check",
+        "description": "Health check endpoint returning service status, name and version.",
+        "operationId": "health_check_api_health_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HealthResponseSerializer"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Unified error envelope for non-success HTTP responses.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponseSerializer"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/health": {
+      "get": {
+        "tags": [
+          "Health"
+        ],
+        "summary": "Liveness check (root)",
+        "description": "Health check endpoint returning service status, name and version.",
+        "operationId": "health_check_health_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HealthResponseSerializer"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Unified error envelope for non-success HTTP responses.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponseSerializer"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/ready": {
+      "get": {
+        "tags": [
+          "Health"
+        ],
+        "summary": "Readiness check (v1)",
+        "description": "Readiness check endpoint that verifies upstream GitHub API reachability within a short timeout (Issue #425).\n\nReturns HTTP 200 when ready, or HTTP 503 when upstream dependencies are unreachable.",
+        "operationId": "readiness_check_api_v1_ready_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ReadinessResponseSerializer"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Unified error envelope for non-success HTTP responses.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponseSerializer"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/ready": {
+      "get": {
+        "tags": [
+          "Health"
+        ],
+        "summary": "Readiness check (api)",
+        "description": "Readiness check endpoint that verifies upstream GitHub API reachability within a short timeout (Issue #425).\n\nReturns HTTP 200 when ready, or HTTP 503 when upstream dependencies are unreachable.",
+        "operationId": "readiness_check_api_ready_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ReadinessResponseSerializer"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Unified error envelope for non-success HTTP responses.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponseSerializer"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/ready": {
+      "get": {
+        "tags": [
+          "Health"
+        ],
+        "summary": "Readiness check (root)",
+        "description": "Readiness check endpoint that verifies upstream GitHub API reachability within a short timeout (Issue #425).\n\nReturns HTTP 200 when ready, or HTTP 503 when upstream dependencies are unreachable.",
+        "operationId": "readiness_check_ready_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ReadinessResponseSerializer"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Unified error envelope for non-success HTTP responses.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponseSerializer"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/health/diagnostics": {
+      "get": {
+        "tags": [
+          "Health"
+        ],
+        "summary": "Health diagnostics (v1)",
+        "description": "Detailed diagnostics of upstream GitHub API connectivity and cache statistics.",
+        "operationId": "health_diagnostics_api_v1_health_diagnostics_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HealthDiagnosticsSerializer"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Unified error envelope for non-success HTTP responses.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponseSerializer"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/health/diagnostics": {
+      "get": {
+        "tags": [
+          "Health"
+        ],
+        "summary": "Health diagnostics",
+        "description": "Detailed diagnostics of upstream GitHub API connectivity and cache statistics.",
+        "operationId": "health_diagnostics_api_health_diagnostics_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HealthDiagnosticsSerializer"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Unified error envelope for non-success HTTP responses.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponseSerializer"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/programs": {
+      "get": {
+        "tags": [
+          "Matching"
+        ],
+        "summary": "List contributor programs (v1)",
+        "operationId": "get_programs_shortcut_api_v1_programs_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "default": {
+            "description": "Unified error envelope for non-success HTTP responses.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponseSerializer"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/programs": {
+      "get": {
+        "tags": [
+          "Matching"
+        ],
+        "summary": "List contributor programs",
+        "operationId": "get_programs_shortcut_api_programs_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "default": {
+            "description": "Unified error envelope for non-success HTTP responses.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponseSerializer"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/github/users/autocomplete": {
+      "get": {
+        "tags": [
+          "GitHub"
+        ],
+        "summary": "Autocomplete GitHub usernames with rate-limit protection (Issue #346)",
+        "operationId": "get_username_autocomplete_api_v1_github_users_autocomplete_get",
+        "parameters": [
+          {
+            "name": "q",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "minLength": 3,
+              "description": "Username query prefix (min 3 chars)",
+              "title": "Q"
+            },
+            "description": "Username query prefix (min 3 chars)"
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "maximum": 10,
+              "minimum": 1,
+              "default": 5,
+              "title": "Limit"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "default": {
+            "description": "Unified error envelope for non-success HTTP responses.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponseSerializer"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/github/users/{username}": {
+      "get": {
+        "tags": [
+          "GitHub"
+        ],
+        "summary": "Get GitHub user profile",
+        "operationId": "get_user_api_v1_github_users__username__get",
+        "parameters": [
+          {
+            "name": "username",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Username"
+            }
+          },
+          {
+            "name": "refresh",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "boolean",
+              "description": "Bypass cache and fetch fresh data (Issue #132)",
+              "default": false,
+              "title": "Refresh"
+            },
+            "description": "Bypass cache and fetch fresh data (Issue #132)"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ExtendedGitHubUserProfileSerializer"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Unified error envelope for non-success HTTP responses.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponseSerializer"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/github/users/{username}/repositories": {
+      "get": {
+        "tags": [
+          "GitHub"
+        ],
+        "summary": "Get GitHub user repositories",
+        "operationId": "get_repositories_api_v1_github_users__username__repositories_get",
+        "parameters": [
+          {
+            "name": "username",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Username"
+            }
+          },
+          {
+            "name": "refresh",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "boolean",
+              "description": "Bypass cache and fetch fresh data (Issue #132)",
+              "default": false,
+              "title": "Refresh"
+            },
+            "description": "Bypass cache and fetch fresh data (Issue #132)"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RepositoryListSerializer"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Unified error envelope for non-success HTTP responses.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponseSerializer"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/github/users/{username}/top-repositories": {
+      "get": {
+        "tags": [
+          "GitHub"
+        ],
+        "summary": "Get top 5 starred and 5 most recent repositories (Issue #85)",
+        "description": "Return top 5 starred repositories and 5 most recently pushed/updated repositories.\n\nSupports fork exclusion and provides language, stars, forks, and updated timestamp.",
+        "operationId": "get_top_repositories_api_v1_github_users__username__top_repositories_get",
+        "parameters": [
+          {
+            "name": "username",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Username"
+            }
+          },
+          {
+            "name": "exclude_forks",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "boolean",
+              "description": "Whether to exclude forked repositories",
+              "default": true,
+              "title": "Exclude Forks"
+            },
+            "description": "Whether to exclude forked repositories"
+          },
+          {
+            "name": "refresh",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "boolean",
+              "description": "Bypass cache and fetch fresh repository data",
+              "default": false,
+              "title": "Refresh"
+            },
+            "description": "Bypass cache and fetch fresh repository data"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TopRepositoriesResponseSerializer"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Unified error envelope for non-success HTTP responses.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponseSerializer"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/github/users/{username}/skills": {
+      "get": {
+        "tags": [
+          "GitHub"
+        ],
+        "summary": "Analyze GitHub user technical skills",
+        "operationId": "get_user_skills_api_v1_github_users__username__skills_get",
+        "parameters": [
+          {
+            "name": "username",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Username"
+            }
+          },
+          {
+            "name": "include_forks",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "boolean",
+              "default": false,
+              "title": "Include Forks"
+            }
+          },
+          {
+            "name": "ignore_noise",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "boolean",
+              "default": true,
+              "title": "Ignore Noise"
+            }
+          },
+          {
+            "name": "group_related",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "boolean",
+              "default": false,
+              "title": "Group Related"
+            }
+          },
+          {
+            "name": "include_proficiency",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "boolean",
+              "default": true,
+              "title": "Include Proficiency"
+            }
+          },
+          {
+            "name": "refresh",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "boolean",
+              "description": "Bypass cache and re-analyze fresh data (Issue #132)",
+              "default": false,
+              "title": "Refresh"
+            },
+            "description": "Bypass cache and re-analyze fresh data (Issue #132)"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserSkillsSerializer"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Unified error envelope for non-success HTTP responses.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponseSerializer"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/github/users/{username}/starred-interests": {
+      "get": {
+        "tags": [
+          "GitHub"
+        ],
+        "summary": "Get user interest signals from starred repositories (Issue #344)",
+        "operationId": "get_starred_interests_api_v1_github_users__username__starred_interests_get",
+        "parameters": [
+          {
+            "name": "username",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Username"
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "maximum": 100,
+              "minimum": 1,
+              "default": 50,
+              "title": "Limit"
+            }
+          },
+          {
+            "name": "refresh",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "boolean",
+              "default": false,
+              "title": "Refresh"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "default": {
+            "description": "Unified error envelope for non-success HTTP responses.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponseSerializer"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/github/users/{username}/external-prs": {
+      "get": {
+        "tags": [
+          "GitHub"
+        ],
+        "summary": "Get merged PR history for other repositories (Issue #192)",
+        "operationId": "get_external_prs_api_v1_github_users__username__external_prs_get",
+        "parameters": [
+          {
+            "name": "username",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Username"
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "maximum": 100,
+              "minimum": 1,
+              "default": 10,
+              "title": "Limit"
+            }
+          },
+          {
+            "name": "refresh",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "boolean",
+              "default": false,
+              "title": "Refresh"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "default": {
+            "description": "Unified error envelope for non-success HTTP responses.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponseSerializer"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/issues/search": {
+      "get": {
+        "tags": [
+          "Issues"
+        ],
+        "summary": "Search good first issues on GitHub",
+        "operationId": "search_issues_api_v1_issues_search_get",
+        "parameters": [
+          {
+            "name": "language",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Language"
+            }
+          },
+          {
+            "name": "label",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Label"
+            }
+          },
+          {
+            "name": "keyword",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Keyword"
+            }
+          },
+          {
+            "name": "per_page",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "maximum": 100,
+              "minimum": 1,
+              "default": 20,
+              "title": "Per Page"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/IssueSearchResponseSerializer"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Unified error envelope for non-success HTTP responses.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponseSerializer"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/ai/analyze-issue": {
+      "post": {
+        "tags": [
+          "AI"
+        ],
+        "summary": "AI-powered issue suitability analysis",
+        "operationId": "analyze_github_issue_api_v1_ai_analyze_issue_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/IssueAnalysisRequestSerializer"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "default": {
+            "description": "Unified error envelope for non-success HTTP responses.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponseSerializer"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/matching/programs": {
+      "get": {
+        "tags": [
+          "Matching"
+        ],
+        "summary": "List supported contributor programs (NSoC, Hacktoberfest, etc.)",
+        "description": "Returns the list of supported contributor programs from config.",
+        "operationId": "list_contributor_programs_api_v1_matching_programs_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "default": {
+            "description": "Unified error envelope for non-success HTTP responses.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponseSerializer"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/matching/users/{username}/issues": {
+      "get": {
+        "tags": [
+          "Matching"
+        ],
+        "summary": "Get Matched Issues",
+        "operationId": "get_matched_issues_api_v1_matching_users__username__issues_get",
+        "parameters": [
+          {
+            "name": "username",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Username"
+            }
+          },
+          {
+            "name": "exclude_stale",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "boolean",
+              "default": false,
+              "title": "Exclude Stale"
+            }
+          },
+          {
+            "name": "skills",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Skills"
+            }
+          },
+          {
+            "name": "program",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Program"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "default": {
+            "description": "Unified error envelope for non-success HTTP responses.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponseSerializer"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/matching/users/{username}/feed.atom": {
+      "get": {
+        "tags": [
+          "Matching"
+        ],
+        "summary": "Get Matched Issues Feed",
+        "description": "Expose the same ranked matches as an Atom feed for feed readers.",
+        "operationId": "get_matched_issues_feed_api_v1_matching_users__username__feed_atom_get",
+        "parameters": [
+          {
+            "name": "username",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Username"
+            }
+          },
+          {
+            "name": "skills",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Skills"
+            }
+          },
+          {
+            "name": "program",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Program"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response"
+          },
+          "default": {
+            "description": "Unified error envelope for non-success HTTP responses.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponseSerializer"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/matching/explain": {
+      "post": {
+        "tags": [
+          "Matching"
+        ],
+        "summary": "Explain Recommendation",
+        "description": "Dedicated endpoint to generate or re-generate an explanation for an issue\nand developer skill combination.",
+        "operationId": "explain_recommendation_api_v1_matching_explain_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "additionalProperties": true,
+                "type": "object",
+                "title": "Payload"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "default": {
+            "description": "Unified error envelope for non-success HTTP responses.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponseSerializer"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/repositories/friendliness": {
+      "get": {
+        "tags": [
+          "Repositories"
+        ],
+        "summary": "Evaluate repository contributor-friendliness checklist",
+        "description": "Checks repository community health: contributing guide, code of conduct, license, recent commits, open good-first-issues, and median response time.",
+        "operationId": "get_repository_friendliness_api_v1_repositories_friendliness_get",
+        "parameters": [
+          {
+            "name": "repo",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "Repository URL or slug, e.g. 'owner/repo' or 'https://github.com/owner/repo'",
+              "title": "Repo"
+            },
+            "description": "Repository URL or slug, e.g. 'owner/repo' or 'https://github.com/owner/repo'"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "default": {
+            "description": "Unified error envelope for non-success HTTP responses.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponseSerializer"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/skills/analyze-text": {
+      "post": {
+        "tags": [
+          "Skills"
+        ],
+        "summary": "Analyze skills from pasted text or resume",
+        "description": "In-memory extraction of technical skills from pasted resume, bio, or project description. Data is never stored.",
+        "operationId": "analyze_pasted_text_api_v1_skills_analyze_text_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PastedTextAnalysisRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PastedTextAnalysisResponse"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Unified error envelope for non-success HTTP responses.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponseSerializer"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "ApiEndpointInfoSerializer": {
+        "properties": {
+          "prefix": {
+            "type": "string",
+            "title": "Prefix",
+            "description": "URL prefix for the API version"
+          },
+          "status": {
+            "type": "string",
+            "title": "Status",
+            "description": "Lifecycle status of this API version"
+          },
+          "is_default": {
+            "type": "boolean",
+            "title": "Is Default",
+            "description": "Whether this prefix is the primary default"
+          },
+          "resources": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Resources",
+            "description": "Available resource endpoints under this prefix"
+          }
+        },
+        "type": "object",
+        "required": [
+          "prefix",
+          "status",
+          "is_default",
+          "resources"
+        ],
+        "title": "ApiEndpointInfoSerializer",
+        "description": "Information regarding an API version path and its supported sub-resources."
+      },
+      "ApiVersionOverviewSerializer": {
+        "properties": {
+          "service": {
+            "type": "string",
+            "title": "Service",
+            "description": "Service identification name"
+          },
+          "current_version": {
+            "type": "string",
+            "title": "Current Version",
+            "description": "Current primary API version prefix"
+          },
+          "available_versions": {
+            "items": {
+              "$ref": "#/components/schemas/ApiEndpointInfoSerializer"
+            },
+            "type": "array",
+            "title": "Available Versions",
+            "description": "List of active API versions"
+          },
+          "documentation": {
+            "$ref": "#/components/schemas/OpenApiMetadataSerializer",
+            "description": "Links to interactive API documentation"
+          }
+        },
+        "type": "object",
+        "required": [
+          "service",
+          "current_version",
+          "available_versions",
+          "documentation"
+        ],
+        "title": "ApiVersionOverviewSerializer",
+        "description": "API version overview and discovery payload."
+      },
+      "ErrorDetailSerializer": {
+        "properties": {
+          "code": {
+            "type": "string",
+            "title": "Code",
+            "description": "Unique machine-readable error code",
+            "example": "NOT_FOUND"
+          },
+          "message": {
+            "type": "string",
+            "title": "Message",
+            "description": "Human-readable error description",
+            "example": "GitHub user not found"
+          },
+          "details": {
+            "title": "Details",
+            "description": "Optional diagnostic details or validation error list"
+          }
+        },
+        "type": "object",
+        "required": [
+          "code",
+          "message"
+        ],
+        "title": "ErrorDetailSerializer",
+        "description": "Detailed error object conforming to the standardized error shape."
+      },
+      "ErrorResponseSerializer": {
+        "properties": {
+          "error": {
+            "$ref": "#/components/schemas/ErrorDetailSerializer"
+          },
+          "detail": {
+            "type": "string",
+            "title": "Detail",
+            "description": "Top-level error message for backward compatibility"
+          },
+          "reset_at": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Reset At",
+            "description": "ISO timestamp for rate limit resets"
+          }
+        },
+        "type": "object",
+        "required": [
+          "error",
+          "detail"
+        ],
+        "title": "ErrorResponseSerializer",
+        "description": "Unified error envelope returned for all API error responses."
+      },
+      "ExtendedGitHubUserProfileSerializer": {
+        "properties": {
+          "username": {
+            "type": "string",
+            "title": "Username",
+            "description": "GitHub handle/login"
+          },
+          "name": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Name",
+            "description": "Display name"
+          },
+          "bio": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Bio",
+            "description": "User biography"
+          },
+          "avatar_url": {
+            "type": "string",
+            "title": "Avatar Url",
+            "description": "URL to avatar image"
+          },
+          "public_repositories": {
+            "type": "integer",
+            "title": "Public Repositories",
+            "description": "Number of public repositories"
+          },
+          "followers": {
+            "type": "integer",
+            "title": "Followers",
+            "description": "Follower count"
+          },
+          "following": {
+            "type": "integer",
+            "title": "Following",
+            "description": "Following count"
+          },
+          "profile_url": {
+            "type": "string",
+            "title": "Profile Url",
+            "description": "Public GitHub profile URL"
+          },
+          "location": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Location",
+            "description": "Location if provided"
+          },
+          "company": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Company",
+            "description": "Company or organization"
+          },
+          "blog": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Blog",
+            "description": "Personal website or blog"
+          },
+          "twitter_username": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Twitter Username",
+            "description": "Twitter / X username"
+          },
+          "created_at": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Created At",
+            "description": "Account creation timestamp"
+          },
+          "public_gists": {
+            "type": "integer",
+            "title": "Public Gists",
+            "description": "Public gist count",
+            "default": 0
+          },
+          "fetched_at": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Fetched At",
+            "description": "ISO 8601 UTC timestamp when profile was retrieved (Issue #132)"
+          }
+        },
+        "type": "object",
+        "required": [
+          "username",
+          "avatar_url",
+          "public_repositories",
+          "followers",
+          "following",
+          "profile_url"
+        ],
+        "title": "ExtendedGitHubUserProfileSerializer",
+        "description": "Extended profile serializer including optional bio and social metadata."
+      },
+      "ExtractedSkillItem": {
+        "properties": {
+          "skill": {
+            "type": "string",
+            "title": "Skill"
+          },
+          "occurrences": {
+            "type": "integer",
+            "title": "Occurrences"
+          },
+          "confidence": {
+            "type": "integer",
+            "maximum": 100,
+            "minimum": 0,
+            "title": "Confidence"
+          },
+          "category": {
+            "type": "string",
+            "title": "Category"
+          }
+        },
+        "type": "object",
+        "required": [
+          "skill",
+          "occurrences",
+          "confidence",
+          "category"
+        ],
+        "title": "ExtractedSkillItem",
+        "description": "Individual skill extracted from text."
+      },
+      "HealthDiagnosticsSerializer": {
+        "properties": {
+          "status": {
+            "type": "string",
+            "title": "Status",
+            "description": "Overall health status",
+            "example": "healthy"
+          },
+          "service": {
+            "type": "string",
+            "title": "Service",
+            "description": "Service identifier",
+            "default": "OpenSourceMate API"
+          },
+          "version": {
+            "type": "string",
+            "title": "Version",
+            "description": "API version",
+            "default": "0.1.0"
+          },
+          "github": {
+            "additionalProperties": true,
+            "type": "object",
+            "title": "Github",
+            "description": "GitHub API connectivity and rate limit stats"
+          },
+          "cache": {
+            "additionalProperties": true,
+            "type": "object",
+            "title": "Cache",
+            "description": "In-memory cache metrics"
+          }
+        },
+        "type": "object",
+        "required": [
+          "status",
+          "github",
+          "cache"
+        ],
+        "title": "HealthDiagnosticsSerializer",
+        "description": "Diagnostics payload with upstream service connectivity and cache metrics."
+      },
+      "HealthResponseSerializer": {
+        "properties": {
+          "status": {
+            "type": "string",
+            "title": "Status",
+            "description": "Current service health status",
+            "default": "healthy",
+            "example": "healthy"
+          },
+          "service": {
+            "type": "string",
+            "title": "Service",
+            "description": "Service identifier",
+            "default": "OpenSourceMate API",
+            "example": "OpenSourceMate API"
+          },
+          "version": {
+            "type": "string",
+            "title": "Version",
+            "description": "API semantic version",
+            "default": "0.1.0",
+            "example": "0.1.0"
+          }
+        },
+        "type": "object",
+        "title": "HealthResponseSerializer",
+        "description": "Health check response serializer for GET /api/health and /api/health/."
+      },
+      "IssueAnalysisRequestSerializer": {
+        "properties": {
+          "issue": {
+            "additionalProperties": true,
+            "type": "object",
+            "title": "Issue",
+            "description": "Raw or parsed GitHub issue dictionary"
+          },
+          "user_skills": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "User Skills",
+            "description": "List of user skills"
+          }
+        },
+        "type": "object",
+        "required": [
+          "issue"
+        ],
+        "title": "IssueAnalysisRequestSerializer",
+        "description": "Request payload for AI issue deep-dive analysis."
+      },
+      "IssueSearchResponseSerializer": {
+        "properties": {
+          "total_count": {
+            "type": "integer",
+            "title": "Total Count",
+            "description": "Total count of matching issues"
+          },
+          "issues": {
+            "items": {
+              "additionalProperties": true,
+              "type": "object"
+            },
+            "type": "array",
+            "title": "Issues",
+            "description": "List of matched issue objects"
+          }
+        },
+        "type": "object",
+        "required": [
+          "total_count"
+        ],
+        "title": "IssueSearchResponseSerializer",
+        "description": "Search results envelope for GitHub issues."
+      },
+      "OpenApiMetadataSerializer": {
+        "properties": {
+          "title": {
+            "type": "string",
+            "title": "Title",
+            "description": "Title of the API specification"
+          },
+          "version": {
+            "type": "string",
+            "title": "Version",
+            "description": "SemVer API version"
+          },
+          "enabled": {
+            "type": "boolean",
+            "title": "Enabled",
+            "description": "Whether HTTP API documentation is enabled"
+          },
+          "docs_url": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Docs Url",
+            "description": "Swagger UI URL, or null when disabled"
+          },
+          "redoc_url": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Redoc Url",
+            "description": "ReDoc URL, or null when disabled"
+          },
+          "openapi_url": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Openapi Url",
+            "description": "OpenAPI JSON URL, or null when disabled"
+          },
+          "tags": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Tags",
+            "description": "List of primary categorized route tags"
+          }
+        },
+        "type": "object",
+        "required": [
+          "title",
+          "version",
+          "enabled",
+          "docs_url",
+          "redoc_url",
+          "openapi_url",
+          "tags"
+        ],
+        "title": "OpenApiMetadataSerializer",
+        "description": "Schema metadata describing API versions and documentation links."
+      },
+      "PastedTextAnalysisRequest": {
+        "properties": {
+          "text": {
+            "type": "string",
+            "maxLength": 10000,
+            "minLength": 5,
+            "title": "Text",
+            "description": "Pasted bio, resume, or project description text (max 10,000 characters).",
+            "examples": [
+              "Full stack developer experienced in React, Next.js, TypeScript, Python, and Docker."
+            ]
+          }
+        },
+        "type": "object",
+        "required": [
+          "text"
+        ],
+        "title": "PastedTextAnalysisRequest",
+        "description": "Payload for analyzing skills from user submitted text."
+      },
+      "PastedTextAnalysisResponse": {
+        "properties": {
+          "skills": {
+            "items": {
+              "$ref": "#/components/schemas/ExtractedSkillItem"
+            },
+            "type": "array",
+            "title": "Skills"
+          },
+          "total_extracted": {
+            "type": "integer",
+            "title": "Total Extracted"
+          },
+          "character_count": {
+            "type": "integer",
+            "title": "Character Count"
+          },
+          "categories": {
+            "additionalProperties": {
+              "type": "integer"
+            },
+            "type": "object",
+            "title": "Categories"
+          }
+        },
+        "type": "object",
+        "required": [
+          "skills",
+          "total_extracted",
+          "character_count",
+          "categories"
+        ],
+        "title": "PastedTextAnalysisResponse",
+        "description": "Result of rule-based text skill analysis."
+      },
+      "ReadinessResponseSerializer": {
+        "properties": {
+          "status": {
+            "type": "string",
+            "title": "Status",
+            "description": "Current service readiness status: ready or not_ready",
+            "example": "ready"
+          },
+          "service": {
+            "type": "string",
+            "title": "Service",
+            "description": "Service identifier",
+            "default": "OpenSourceMate API",
+            "example": "OpenSourceMate API"
+          },
+          "version": {
+            "type": "string",
+            "title": "Version",
+            "description": "API version",
+            "default": "0.1.0",
+            "example": "0.1.0"
+          },
+          "github_reachable": {
+            "type": "boolean",
+            "title": "Github Reachable",
+            "description": "Whether upstream GitHub API is reachable within short timeout",
+            "example": true
+          },
+          "details": {
+            "title": "Details",
+            "description": "Optional diagnostic or error details"
+          }
+        },
+        "type": "object",
+        "required": [
+          "status",
+          "github_reachable"
+        ],
+        "title": "ReadinessResponseSerializer",
+        "description": "Readiness probe response serializer checking upstream dependencies (Issue #425)."
+      },
+      "RepositoryItemSerializer": {
+        "properties": {
+          "name": {
+            "type": "string",
+            "title": "Name",
+            "description": "Repository name"
+          },
+          "description": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Description",
+            "description": "Repository description"
+          },
+          "language": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Language",
+            "description": "Primary programming language"
+          },
+          "stars": {
+            "type": "integer",
+            "title": "Stars",
+            "description": "Star count",
+            "default": 0
+          },
+          "forks": {
+            "type": "integer",
+            "title": "Forks",
+            "description": "Fork count",
+            "default": 0
+          },
+          "is_fork": {
+            "type": "boolean",
+            "title": "Is Fork",
+            "description": "Whether this repository is a fork",
+            "default": false
+          },
+          "url": {
+            "type": "string",
+            "title": "Url",
+            "description": "HTML URL to repository"
+          },
+          "updated_at": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Updated At",
+            "description": "Last update ISO timestamp"
+          }
+        },
+        "type": "object",
+        "required": [
+          "name",
+          "url"
+        ],
+        "title": "RepositoryItemSerializer",
+        "description": "Individual repository summary serializer."
+      },
+      "RepositoryListSerializer": {
+        "properties": {
+          "username": {
+            "type": "string",
+            "title": "Username",
+            "description": "Target GitHub username"
+          },
+          "repository_count": {
+            "type": "integer",
+            "title": "Repository Count",
+            "description": "Total repository count returned"
+          },
+          "total_pages_fetched": {
+            "type": "integer",
+            "title": "Total Pages Fetched",
+            "description": "Number of repository pages fetched from GitHub API",
+            "default": 1
+          },
+          "has_more": {
+            "type": "boolean",
+            "title": "Has More",
+            "description": "Whether more repositories exist beyond the pagination cap",
+            "default": false
+          },
+          "fetched_at": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Fetched At",
+            "description": "ISO 8601 UTC timestamp when repositories were retrieved (Issue #132)"
+          },
+          "repositories": {
+            "items": {
+              "$ref": "#/components/schemas/RepositoryItemSerializer"
+            },
+            "type": "array",
+            "title": "Repositories",
+            "description": "Repository list"
+          }
+        },
+        "type": "object",
+        "required": [
+          "username",
+          "repository_count"
+        ],
+        "title": "RepositoryListSerializer",
+        "description": "List of repositories for a user with pagination metadata."
+      },
+      "SkillItemSerializer": {
+        "properties": {
+          "name": {
+            "type": "string",
+            "title": "Name",
+            "description": "Skill / technology name"
+          },
+          "repository_count": {
+            "type": "integer",
+            "title": "Repository Count",
+            "description": "Number of repositories using this skill"
+          },
+          "percentage": {
+            "type": "number",
+            "title": "Percentage",
+            "description": "Skill percentage weight"
+          },
+          "type": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Type",
+            "description": "Skill classification, e.g. language or framework"
+          },
+          "weight": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Weight",
+            "description": "Calculated skill weight"
+          },
+          "group": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Group",
+            "description": "Associated technology ecosystem or group name (Issue #130)"
+          },
+          "subskills": {
+            "anyOf": [
+              {
+                "items": {
+                  "type": "string"
+                },
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Subskills",
+            "description": "Constituent technologies if this item represents a combined group (Issue #130)"
+          },
+          "proficiency": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Proficiency",
+            "description": "Estimated proficiency level: Learning, Comfortable, or Strong (Issue #131)"
+          },
+          "proficiency_score": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Proficiency Score",
+            "description": "Calculated proficiency score from 0.0 to 10.0 (Issue #131)"
+          },
+          "proficiency_reason": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Proficiency Reason",
+            "description": "Explanation of how the proficiency estimate was computed (Issue #131)"
+          }
+        },
+        "type": "object",
+        "required": [
+          "name",
+          "repository_count",
+          "percentage"
+        ],
+        "title": "SkillItemSerializer",
+        "description": "Individual skill breakdown serializer."
+      },
+      "TopRepositoriesResponseSerializer": {
+        "properties": {
+          "username": {
+            "type": "string",
+            "title": "Username",
+            "description": "GitHub username"
+          },
+          "exclude_forks": {
+            "type": "boolean",
+            "title": "Exclude Forks",
+            "description": "Whether forks were excluded",
+            "default": true
+          },
+          "top_by_stars": {
+            "items": {
+              "$ref": "#/components/schemas/RepositoryItemSerializer"
+            },
+            "type": "array",
+            "title": "Top By Stars",
+            "description": "Top 5 repositories sorted by stars descending"
+          },
+          "most_recent": {
+            "items": {
+              "$ref": "#/components/schemas/RepositoryItemSerializer"
+            },
+            "type": "array",
+            "title": "Most Recent",
+            "description": "Top 5 repositories sorted by pushed_at/updated_at descending"
+          }
+        },
+        "type": "object",
+        "required": [
+          "username"
+        ],
+        "title": "TopRepositoriesResponseSerializer",
+        "description": "Top repositories by stars and recent activity (Issue #85)."
+      },
+      "UserSkillsSerializer": {
+        "properties": {
+          "username": {
+            "type": "string",
+            "title": "Username",
+            "description": "GitHub username analyzed"
+          },
+          "skills": {
+            "items": {
+              "$ref": "#/components/schemas/SkillItemSerializer"
+            },
+            "type": "array",
+            "title": "Skills",
+            "description": "Extracted skills"
+          },
+          "total_repositories_analyzed": {
+            "type": "integer",
+            "title": "Total Repositories Analyzed",
+            "description": "Total count of analyzed repositories"
+          },
+          "groups": {
+            "anyOf": [
+              {
+                "additionalProperties": {
+                  "items": {
+                    "type": "string"
+                  },
+                  "type": "array"
+                },
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Groups",
+            "description": "Mapping of active technology groups to present constituent skills (Issue #130)"
+          },
+          "analyzed_at": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Analyzed At",
+            "description": "ISO 8601 UTC timestamp indicating when this skill analysis was generated (Issue #132)"
+          }
+        },
+        "type": "object",
+        "required": [
+          "username",
+          "total_repositories_analyzed"
+        ],
+        "title": "UserSkillsSerializer",
+        "description": "Skill analysis output serializer."
+      }
+    }
+  },
+  "tags": [
+    {
+      "name": "Health",
+      "description": "System health monitoring, status indicators, and upstream service diagnostics."
+    },
+    {
+      "name": "GitHub",
+      "description": "GitHub profile analysis, repository ingestion, and technical skill extraction."
+    },
+    {
+      "name": "Matching",
+      "description": "Matching algorithm mapping developer competencies to open-source contribution opportunities."
+    },
+    {
+      "name": "Issues",
+      "description": "Open-source issues search, retrieval, and metadata filters."
+    },
+    {
+      "name": "AI",
+      "description": "Generative AI personalized recommendation explanations."
+    }
+  ]
+}

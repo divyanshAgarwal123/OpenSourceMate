@@ -1,0 +1,42 @@
+[
+  {
+    "step": "declared-dependencies",
+    "exit": 0,
+    "seconds": 0.29
+  },
+  {
+    "step": "head-openapi",
+    "exit": 0,
+    "seconds": 0.66
+  },
+  {
+    "step": "head-backend-tests",
+    "exit": 1,
+    "seconds": 23.89
+  },
+  {
+    "step": "head-backend-mypy",
+    "exit": 0,
+    "seconds": 6.56
+  },
+  {
+    "step": "parent-backend-tests",
+    "exit": 1,
+    "seconds": 18.49
+  },
+  {
+    "step": "parent-backend-mypy",
+    "exit": 0,
+    "seconds": 5.21
+  },
+  {
+    "step": "parent-backend-lint",
+    "exit": 1,
+    "seconds": 0.49
+  },
+  {
+    "step": "parent-backend-format",
+    "exit": 1,
+    "seconds": 0.03
+  }
+]

@@ -1,0 +1,42 @@
+[
+  {
+    "step": "backend-scoped-lint",
+    "exit": 0,
+    "seconds": 0.05
+  },
+  {
+    "step": "backend-full-lint",
+    "exit": 1,
+    "seconds": 0.03
+  },
+  {
+    "step": "backend-full-format",
+    "exit": 1,
+    "seconds": 0.02
+  },
+  {
+    "step": "frontend-lint",
+    "exit": 2,
+    "seconds": 1.71
+  },
+  {
+    "step": "frontend-tests",
+    "exit": 1,
+    "seconds": 117.39
+  },
+  {
+    "step": "frontend-types",
+    "exit": 1,
+    "seconds": 1.69
+  },
+  {
+    "step": "frontend-codegen",
+    "exit": 0,
+    "seconds": 0.74
+  },
+  {
+    "step": "frontend-build",
+    "exit": 1,
+    "seconds": 4.73
+  }
+]

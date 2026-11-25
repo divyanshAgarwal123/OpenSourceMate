@@ -1,0 +1,1 @@
+OpenAPI structure and local references valid: 27 paths

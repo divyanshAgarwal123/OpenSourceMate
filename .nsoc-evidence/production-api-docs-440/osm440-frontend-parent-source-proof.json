@@ -1,0 +1,5 @@
+{
+  "frontendTree": "255713096f1dbcf2339567c0f59de8b6bbe3f1d1",
+  "frontendTaskChanges": [],
+  "reason": "No frontend source/dependency/config changes. Canonical frontend failures are on byte-identical actual-parent source; no broad frontend repair folded into backend docs issue."
+}

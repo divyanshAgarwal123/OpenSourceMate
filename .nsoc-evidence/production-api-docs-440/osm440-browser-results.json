@@ -1,0 +1,138 @@
+{
+  "results": [
+    {
+      "mode": "development",
+      "enabled": true,
+      "statuses": {
+        "/docs": 200,
+        "/docs/oauth2-redirect": 200,
+        "/redoc": 200,
+        "/openapi.json": 200
+      },
+      "discovery": {
+        "title": "OpenSourceMate API",
+        "version": "1.0.0",
+        "enabled": true,
+        "docs_url": "/docs",
+        "redoc_url": "/redoc",
+        "openapi_url": "/openapi.json",
+        "tags": [
+          "Health",
+          "GitHub",
+          "Matching",
+          "Issues",
+          "AI"
+        ]
+      },
+      "views": [
+        {
+          "width": 1280,
+          "liveHealthStatus": 200,
+          "errors": [],
+          "horizontalOverflow": false
+        },
+        {
+          "width": 390,
+          "liveHealthStatus": 200,
+          "errors": [],
+          "horizontalOverflow": false
+        }
+      ],
+      "schemaPaths": 27,
+      "openapi": "3.1.0"
+    },
+    {
+      "mode": "production-default",
+      "enabled": false,
+      "statuses": {
+        "/docs": 404,
+        "/docs/oauth2-redirect": 404,
+        "/redoc": 404,
+        "/openapi.json": 404
+      },
+      "discovery": {
+        "title": "OpenSourceMate API",
+        "version": "1.0.0",
+        "enabled": false,
+        "docs_url": null,
+        "redoc_url": null,
+        "openapi_url": null,
+        "tags": [
+          "Health",
+          "GitHub",
+          "Matching",
+          "Issues",
+          "AI"
+        ]
+      },
+      "views": []
+    },
+    {
+      "mode": "production-opt-in",
+      "enabled": true,
+      "statuses": {
+        "/docs": 200,
+        "/docs/oauth2-redirect": 200,
+        "/redoc": 200,
+        "/openapi.json": 200
+      },
+      "discovery": {
+        "title": "OpenSourceMate API",
+        "version": "1.0.0",
+        "enabled": true,
+        "docs_url": "/docs",
+        "redoc_url": "/redoc",
+        "openapi_url": "/openapi.json",
+        "tags": [
+          "Health",
+          "GitHub",
+          "Matching",
+          "Issues",
+          "AI"
+        ]
+      },
+      "views": [
+        {
+          "width": 1280,
+          "liveHealthStatus": 200,
+          "errors": [],
+          "horizontalOverflow": false
+        },
+        {
+          "width": 390,
+          "liveHealthStatus": 200,
+          "errors": [],
+          "horizontalOverflow": false
+        }
+      ],
+      "schemaPaths": 27,
+      "openapi": "3.1.0"
+    },
+    {
+      "mode": "development-disabled",
+      "enabled": false,
+      "statuses": {
+        "/docs": 404,
+        "/docs/oauth2-redirect": 404,
+        "/redoc": 404,
+        "/openapi.json": 404
+      },
+      "discovery": {
+        "title": "OpenSourceMate API",
+        "version": "1.0.0",
+        "enabled": false,
+        "docs_url": null,
+        "redoc_url": null,
+        "openapi_url": null,
+        "tags": [
+          "Health",
+          "GitHub",
+          "Matching",
+          "Issues",
+          "AI"
+        ]
+      },
+      "views": []
+    }
+  ]
+}
